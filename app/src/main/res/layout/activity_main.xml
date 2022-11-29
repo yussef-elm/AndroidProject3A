@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPastelBleu"
+    tools:context=".MainActivity">
+
+    <View
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:background="@color/colorPrimary"/>
+
+    <include layout="@layout/header" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/searchInput"
+        android:layout_below="@id/appQuote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="15dp"
+        app:cardBackgroundColor="@color/colorPrimaryDark"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp">
+
+        <SearchView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:padding="10dp"
+            android:id="@+id/search_recipe"
+            android:text="@string/search_your_recipes"
+            android:theme="@style/SearchView"
+            android:drawablePadding="2dp"
+            android:iconifiedByDefault="false"
+            android:queryHint="Search any recipe"
+            android:searchIcon="@drawable/ic_search"
+            app:queryBackground="@android:color/transparent"
+            android:queryBackground="@android:color/transparent"
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/categoriesTitle"
+        android:text="@string/categories"
+        android:textSize="20sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appBar"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_below="@id/categoriesTitle"
+        >
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+
+
+</RelativeLayout>
