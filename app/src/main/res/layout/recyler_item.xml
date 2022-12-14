@@ -24,28 +24,28 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/strCategoryThumb"
+                android:id="@+id/strMealThumb"
                 android:layout_width="87dp"
                 android:layout_height="80dp"
                 android:padding="5dp"
                 android:scaleType="centerInside" />
 
             <TextView
-                android:id="@+id/strCategory"
+                android:id="@+id/strMeal"
                 android:layout_width="89dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/strCategoryThumb"
+                android:layout_below="@id/strMealThumb"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:gravity="center"
-                android:text="Category"
+                android:text="Meal"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/strCategoryDescription"
-                android:layout_toRightOf="@id/strCategoryThumb"
+                android:layout_toRightOf="@id/strMealThumb"
                 android:padding="20dp"
 
                 />

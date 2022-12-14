@@ -3,8 +3,11 @@ package com.enseirb.recipefoodapp.services
 import okhttp3.*
 import java.net.URL
 
-class ApiService {
+
+class CallbackBuilder () {
+
     var client = OkHttpClient()
+
     fun GET(url: URL, callback: Callback): Call {
         val request = Request.Builder()
             .url(url)
@@ -14,4 +17,5 @@ class ApiService {
         call.enqueue(callback)
         return call
     }
+
 }
