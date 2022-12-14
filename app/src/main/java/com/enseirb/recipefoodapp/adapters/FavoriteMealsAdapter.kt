@@ -1,6 +1,7 @@
 package com.enseirb.recipefoodapp.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.enseirb.recipefoodapp.R
+import com.enseirb.recipefoodapp.activities.RecipeActivity
 import com.enseirb.recipefoodapp.models.Meal
 import com.enseirb.recipefoodapp.repositories.DataBaseHelper
 
@@ -28,6 +30,7 @@ class FavoriteMealsAdapter(private val context: Context, private val meals: Arra
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.strMealThumb);
             holder.strMeal.text = meals[position].strMeal
+            holder.meal = meals[position]
             holder.checkBox.isChecked = dataBaseHelper.getCheckBoxState(meals[position])
             holder.checkBox.setOnClickListener() {
                 if (holder.checkBox.isChecked) {
@@ -49,9 +52,19 @@ class FavoriteMealsAdapter(private val context: Context, private val meals: Arra
 
 }
 
-class FavoriteMealViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class FavoriteMealViewHolder(itemView: View,var meal: Meal?=null) : RecyclerView.ViewHolder(itemView) {
     var strMeal: TextView = itemView.findViewById(R.id.strMeal)
     var strMealThumb: ImageView = itemView.findViewById(R.id.mealImage)
     var checkBox: CheckBox = itemView.findViewById(R.id.favorite)
     var card : CardView = itemView.findViewById(R.id.mealCard)
+    init {
+        itemView.setOnClickListener{
+            val intent = Intent(itemView.context, RecipeActivity::class.java)
+            intent.putExtra("idMeal",meal?.idMeal)
+            intent.putExtra("strMeal",meal?.strMeal)
+            intent.putExtra("strMealThumb",meal?.strMealThumb)
+            intent.putExtra("recipeType", "Regular")
+            itemView.context.startActivity(intent)
+        }
+    }
 }
